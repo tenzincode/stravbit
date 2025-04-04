@@ -1,0 +1,26 @@
+name: Sync Strava Activity to Fitbit
+
+on:
+  repository_dispatch:
+    types: [strava_webhook]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install axios dotenv
+
+      - name: Run Sync Script
+        env:
+          STRAVA_TOKEN: ${{ secrets.STRAVA_TOKEN }}
+          FITBIT_TOKEN: ${{ secrets.FITBIT_TOKEN }}
+        run: node sync.js
