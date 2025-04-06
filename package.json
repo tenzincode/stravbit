@@ -1,0 +1,19 @@
+{
+  "name": "stravbit",
+  "version": "1.0.0",
+  "description": "A simple automation tool that syncs Strava activities to Fitbit using Vercel and GitHub Actions.",
+  "main": "sync.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tenzincode/stravbit.git"
+  },
+  "author": "tenzincode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tenzincode/stravbit/issues"
+  },
+  "homepage": "https://github.com/tenzincode/stravbit#readme"
+}
