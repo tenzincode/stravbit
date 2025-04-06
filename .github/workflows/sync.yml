@@ -2,7 +2,7 @@ name: Sync Strava Activity to Fitbit
 
 on:
   repository_dispatch:
-    types: [strava_webhook]
+    types: [strava_activity]
 
 jobs:
   sync:
@@ -17,10 +17,14 @@ jobs:
           node-version: 18
 
       - name: Install Dependencies
-        run: npm install axios dotenv
+        run: npm install
 
       - name: Run Sync Script
         env:
-          STRAVA_TOKEN: ${{ secrets.STRAVA_TOKEN }}
-          FITBIT_TOKEN: ${{ secrets.FITBIT_TOKEN }}
-        run: node sync.js
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+          FITBIT_CLIENT_ID: ${{ secrets.FITBIT_CLIENT_ID }}
+          FITBIT_CLIENT_SECRET: ${{ secrets.FITBIT_CLIENT_SECRET }}
+          FITBIT_REFRESH_TOKEN: ${{ secrets.FITBIT_REFRESH_TOKEN }}
+        run: npx ts-node sync.ts

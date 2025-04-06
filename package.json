@@ -2,9 +2,14 @@
   "name": "stravbit",
   "version": "1.0.0",
   "description": "A simple automation tool that syncs Strava activities to Fitbit using Vercel and GitHub Actions.",
-  "main": "sync.js",
+  "main": "sync.ts",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vercel dev",
+    "deploy": "vercel deploy --prod",
+    "build": "tsc",
+    "sync": "ts-node sync.ts"
   },
   "repository": {
     "type": "git",
@@ -15,5 +20,16 @@
   "bugs": {
     "url": "https://github.com/tenzincode/stravbit/issues"
   },
-  "homepage": "https://github.com/tenzincode/stravbit#readme"
+  "homepage": "https://github.com/tenzincode/stravbit#readme",
+  "dependencies": {
+    "@vercel/node": "^3.0.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
+    "vercel": "^32.5.0"
+  }
 }
